@@ -85,7 +85,7 @@ def spam():
         current_day = immediately.strftime("%Y.%M.%D")
         current_time = immediately.strftime("%H:%M")
         for user in users:
-            if dembel == const:
+            if (current_day - const)==0:
                 bot.send_message(user, 'Всё, всех поздравляю! Год прошёл, юху-у-у!')
                 file = open('./Vse_GIF.mp4', 'rb')
                 bot.send_animation(user, file)
