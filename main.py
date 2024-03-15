@@ -9,8 +9,10 @@ bot = telebot.TeleBot(cfg.TOKEN)
 
 users = []
 user = cfg.CHAT_TEST_ID
-const = 365
-dembel = 98
+const = datetime.datetime(2023, 11, 29) # год, месяц, число
+const.strftime("%Y.%M.%D")
+#dembel = 103
+
 
 @bot.message_handler(commands=['start','description','help']) # обработка кнопки /start в боте
 def start(message):
@@ -60,11 +62,12 @@ def add_user(message):
     offset = datetime.timedelta(hours=3)
     immediately = datetime.datetime.now(tz=datetime.timezone(offset, 'MSK'))
     cuurent_date = immediately.strftime("%d.%m.%Y %H:%M:%S")
+    current_day = immediately.strftime("%Y.%M.%D")
     if user not in users:
         users.append(user)
     #bot.send_message(user, f'#игорьдембель{const - dembel}')
     bot.send_message(user, f'С сегодняшнего дня, а именно {cuurent_date}, я буду считать дни до дембеля Игоря🫡. Надеюсь, я буду это делать исправно!')
-    bot.send_message(user, f'#игорьдембель{const - dembel}')
+    bot.send_message(user, f'#игорьдембель{current_day - const}')
 
 @bot.message_handler(commands=['stop'])
 def remove_user(message):
@@ -76,8 +79,10 @@ def spam():
     global users
     offset = datetime.timedelta(hours=3)
     global const, dembel
+
     while True:
         immediately = datetime.datetime.now(tz=datetime.timezone(offset, 'MSK'))
+        current_day = immediately.strftime("%Y.%M.%D")
         current_time = immediately.strftime("%H:%M")
         for user in users:
             if dembel == const:
@@ -85,8 +90,8 @@ def spam():
                 file = open('./Vse_GIF.mp4', 'rb')
                 bot.send_animation(user, file)
                 users.remove(user)
-            elif current_time == '18:55':
-                bot.send_message(user, f'#игорьдембель{const - dembel}')
+            elif current_time == '20:07':
+                bot.send_message(user, f'#игорьдембель{current_day - const}')
                 time.sleep(24*3600) # время, через которое отправляется команда выше
                 dembel=dembel+1
 
