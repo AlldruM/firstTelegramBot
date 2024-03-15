@@ -10,8 +10,7 @@ bot = telebot.TeleBot(cfg.TOKEN)
 users = []
 user = cfg.CHAT_TEST_ID
 const = 365
-dembel = 103
-
+dembel = 98
 
 @bot.message_handler(commands=['start','description','help']) # обработка кнопки /start в боте
 def start(message):
