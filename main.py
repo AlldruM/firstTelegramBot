@@ -104,8 +104,7 @@ def spam():
                 users.remove(user)
             elif current_time == '10:00':
                 bot.send_message(user, f'#игорьдембель{const - date_difference.days}')
-                time.sleep(24*3600) # время, через которое отправляется команда выше
-                dembel=dembel+1
+                #time.sleep(24*3600) # время, через которое отправляется команда выше
 
 @bot.message_handler(content_types='text')
 def info(message):
