@@ -61,7 +61,7 @@ def start(message):
 @bot.message_handler(commands=['spam'])
 def add_user(message):
     global user
-    global const
+    global const,given_date
     
     # Текущая дата
     current_date = datetime.datetime.now()
@@ -86,7 +86,7 @@ def remove_user(message):
 def spam():
     global users
     offset = datetime.timedelta(hours=3)
-    global const
+    global const,given_date
     
     # Текущая дата
     current_date = datetime.datetime.now()
