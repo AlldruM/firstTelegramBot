@@ -17,12 +17,6 @@ date_format = "%Y-%m-%d"
 # Преобразование строки в объект datetime
 given_date = datetime.datetime.strptime(date_string, date_format)
 
-# Текущая дата
-current_date = datetime.datetime.now()
-
-# Вычисление разницы между датами
-date_difference = current_date - given_date
-
 
 @bot.message_handler(commands=['start','description','help']) # обработка кнопки /start в боте
 def start(message):
@@ -67,7 +61,13 @@ def start(message):
 @bot.message_handler(commands=['spam'])
 def add_user(message):
     global user
-    global const,date_difference
+    global const
+    
+    # Текущая дата
+    current_date = datetime.datetime.now()
+    # Вычисление разницы между датами
+    date_difference = current_date - given_date
+    
     user = message.chat.id
     offset = datetime.timedelta(hours=3)
     immediately = datetime.datetime.now(tz=datetime.timezone(offset, 'MSK'))
@@ -86,7 +86,13 @@ def remove_user(message):
 def spam():
     global users
     offset = datetime.timedelta(hours=3)
-    global const, date_difference
+    global const
+    
+    # Текущая дата
+    current_date = datetime.datetime.now()
+    # Вычисление разницы между датами
+    date_difference = current_date - given_date
+    
     while True:
         immediately = datetime.datetime.now(tz=datetime.timezone(offset, 'MSK'))
         current_time = immediately.strftime("%H:%M")
