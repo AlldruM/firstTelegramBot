@@ -92,7 +92,7 @@ def spam():
     current_date = datetime.datetime.now()
     # Вычисление разницы между датами
     date_difference = current_date - given_date
-    result_date - date_difference.days
+    result_date = date_difference.days
     
     while True:
         immediately = datetime.datetime.now(tz=datetime.timezone(offset, 'MSK'))
