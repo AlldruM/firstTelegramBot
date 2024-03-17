@@ -52,12 +52,6 @@ def callbackMessage(callback):
     elif callback.data == 'edit':
             bot.edit_message_text('Функция в разработке, но скоро станет доступна <span class="tg-spoiler">(ОтсылОЧКА на Яндекс)</span>', callback.message.chat.id, callback.message.message_id, parse_mode='HTML')
 
-
-@bot.message_handler(commands=['start', 'help'])
-def start(message):
-    user = message.chat.id
-    bot.send_message(user, "https://www.youtube.com/watch?v=rdg4lkgsQ04")
-
 @bot.message_handler(commands=['spam'])
 def add_user(message):
     global user
@@ -103,12 +97,10 @@ def spam():
                 file = open('./Vse_GIF.mp4', 'rb')
                 bot.send_animation(user, file)
                 users.remove(user)
-            #elif current_time == '10:00':
-            else:
+            elif current_time == '10:00':
                 bot.send_message(user, f'#игорьдембель{const - result_date}')
-                time.sleep(360) # время, через которое отправляется команда выше
+                time.sleep(24*3600) # время, через которое отправляется команда выше
                 result_date = result_date + 1
-                #time.sleep(24*3600) # время, через которое отправляется команда выше
 
 @bot.message_handler(content_types='text')
 def info(message):
