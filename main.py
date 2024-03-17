@@ -92,6 +92,7 @@ def spam():
     current_date = datetime.datetime.now()
     # Вычисление разницы между датами
     date_difference = current_date - given_date
+    result_date - date_difference.days
     
     while True:
         immediately = datetime.datetime.now(tz=datetime.timezone(offset, 'MSK'))
@@ -102,8 +103,11 @@ def spam():
                 file = open('./Vse_GIF.mp4', 'rb')
                 bot.send_animation(user, file)
                 users.remove(user)
-            elif current_time == '10:00':
-                bot.send_message(user, f'#игорьдембель{const - date_difference.days}')
+            #elif current_time == '10:00':
+            else:
+                bot.send_message(user, f'#игорьдембель{const - result_date}')
+                time.sleep(360) # время, через которое отправляется команда выше
+                result_date = result_date + 1
                 #time.sleep(24*3600) # время, через которое отправляется команда выше
 
 @bot.message_handler(content_types='text')
