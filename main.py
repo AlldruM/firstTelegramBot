@@ -70,6 +70,8 @@ def add_user(message):
         users.append(user)
     bot.send_message(user, f'С сегодняшнего дня, а именно {cuurent_date}, я буду считать дни до дембеля Игоря🫡. Надеюсь, я буду это делать исправно!')
     bot.send_message(user, f'#игорьдембель{const - date_difference.days}')
+    result_date = date_difference.days
+    result_date = result_date + 1
 
 @bot.message_handler(commands=['stop'])
 def remove_user(message):
